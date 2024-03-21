@@ -1,34 +1,32 @@
 import React from "react";
 import styled from "styled-components";
-import {BASE_URL} from "../App";
+import { BASE_URL } from "../App";
 
-function SearchResult({foods}) {
-    function Card({ food }) {
-        const { name, image, price, text } = food; // Destructure props correctly
-        return (
-          <CardContainer>
-            <div>
-              <img src={BASE_URL + image} alt="food" />
-            </div>
-            <div className="food_info">
-              <div>
-                <h3 className="food-name">{name}</h3>
-                <p>{text}</p>
-              </div>
-              <button>${price.toFixed(2)}</button>
-            </div>
-          </CardContainer>
-        );
-      }
-  
+function SearchResult({ foods }) {
+  function Card({ food }) {
+    const { name, image, price, text } = food; // Destructure props correctly
+    return (
+      <CardContainer>
+        <div>
+          <img className="foodImg" src={image} alt="food" />
+        </div>
+        <div className="food_info">
+          <div>
+            <h3 className="food-name">{name}</h3>
+            <p>{text}</p>
+          </div>
+          <button>${price.toFixed(2)}</button>
+        </div>
+      </CardContainer>
+    );
+  }
+
   return (
     <Container>
       <FoodCards>
-        {
-            foods?.map((food,i)=>{
-                return <Card key = {i} food={food}/>
-            })
-        }
+        {foods?.map((food, i) => {
+          return <Card key={i} food={food} />;
+        })}
       </FoodCards>
     </Container>
   );
@@ -60,6 +58,9 @@ const CardContainer = styled.div`
   width: 340px;
   height: 167px;
   border: 0.66px solid;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
 
   border-image-source: radial-gradient(
       80.69% 208.78% at 108.28% 112.58%,
@@ -84,6 +85,11 @@ const CardContainer = styled.div`
 
   border-radius: 20px;
   padding: 8px;
+  .foodImg {
+    max-width: 70px;
+    max-height: 70px;
+    border-radius: 50%;
+  }
   .food_info {
     display: flex;
     flex-direction: column;
@@ -92,12 +98,12 @@ const CardContainer = styled.div`
 
     h3 {
       margin-top: 8px;
-      font-size: 20px;
+      font-size: 25px;
       font-weight: 700;
     }
     p {
       margin-top: 4px;
-      font-size: 12px;
+      font-size: 15px;
     }
     button {
       font-size: 12px;

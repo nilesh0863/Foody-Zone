@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import "./app.css";
 import SearchResult from "./components/SearchResult";
+import logo from './assets/logo.svg'
 import { useState, useEffect } from "react";
-export const BASE_URL = "http://localhost:9000";
+export const BASE_URL = "https://foodyzone-backend.onrender.com/";
 const App = () => {
   const [data,setData] = useState(null);
   const [loading,setLoading] = useState(false);
@@ -62,7 +63,7 @@ const App = () => {
       <Container>
         <TopContainer>
           <div>
-            <img src="src/assets/Foody Zone.svg" alt="logo" />
+            <img src={logo} alt="logo" />
           </div>
           <div>
             <input type="text" onChange = {searchFood} placeholder="Search Food.." />
@@ -100,7 +101,6 @@ const TopContainer = styled.section`
   @media (0 < width < 600px) {
     flex-direction:column;
     justify-content: center;
-    background-color: khaki;
     text-align:center;
     height: 50px;
     gap:15px;
